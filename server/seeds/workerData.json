@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "61421d243429491fdccab7f4",
+        "username": "Santa",
+        "email": "oldstnick@northpole.com",
+        "password": "MrsClause",
+        "profession": "software"
+    },
+    {
+        "_id": "61421d243429491fdccab7f5",
+        "username": "Mrs Clause",
+        "email": "presentwrapper@northpole.com",
+        "password": "theolenorth",
+        "profession": "wrapping"
+    }
+]

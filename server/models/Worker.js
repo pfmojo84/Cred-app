@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-// schema for creating an employer model with email validation
-const employerSchema = new Schema(
+// schema for creating a worker model with email validation
+const workerSchema = new Schema(
     {
         username: {
             type: String,
@@ -20,6 +20,10 @@ const employerSchema = new Schema(
             type: String,
             required: true
         },
+        profession: {
+            type: String,
+            required: true
+        },
         jobs: [
             {
                 type: Schema.Types.ObjectId,
@@ -29,6 +33,6 @@ const employerSchema = new Schema(
     }
 )
 
-const Employer = model('Employer', employerSchema);
+const Worker = model('Worker', workerSchema);
 
-module.exports = Employer;
+module.exports = Worker;

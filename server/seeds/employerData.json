@@ -1,0 +1,14 @@
+[
+    {
+        "_id": "61421d243429491fdccab7f6",
+        "username": "Rudolf",
+        "email": "rednosedboss@northpole.com",
+        "password": "icanfly"
+    },
+    {
+        "_id": "61421d243429491fdccab7f7",
+        "username": "Dancer",
+        "email": "notprancer@northpole.com",
+        "password": "dancerdances"
+    }
+]
