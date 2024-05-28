@@ -11,7 +11,7 @@ const resolvers = {
             return await Employer.find({});
         },
         jobs: async () => {
-            return await Job.find({}).populate('employer').populate('worker')
+            return await Job.find({})
         }
     },
 
@@ -26,6 +26,16 @@ const resolvers = {
         jobs: async (worker) => {
             const jobs = await Job.find({ worker: worker._id })
             return jobs;
+        }
+    },
+    Job: {
+        employer: async (job) => {
+            const employer = await Employer.findById(job.employer);
+            return employer;
+        },
+        worker: async (job) => {
+            const worker = await Worker.findById(job.worker);
+            return worker;
         }
     }
 }
