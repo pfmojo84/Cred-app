@@ -1,0 +1,29 @@
+const { Schema, model } = require('mongoose');
+
+// schema for making a job model
+const jobSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        description: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        employer: {
+            type: Schema.Types.ObjectId,
+            ref: 'Employer'
+        },
+        worker: {
+            type: Schema.Types.ObjectId,
+            ref: 'Worker',
+            default: null
+        }
+    }
+);
+
+const Job = model('Job', jobSchema);
+module.exports = Job;
