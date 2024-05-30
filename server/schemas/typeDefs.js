@@ -36,19 +36,58 @@ type Query {
 }
 
 type Mutation {
-    addJob(name: String!, description: String!, employer: ID!): Job
-    updateJob(id: ID!, worker: ID, description: String, name: String): Job
+    addJob(
+        name: String!
+        description: String!
+        employer: ID!
+    ): Job
+    
+    updateJob(
+        id: ID!
+        worker: ID
+        description: String
+        name: String
+    ): Job
+
     deleteJob(id: ID!): Job
 
-    addWorker(username: String!, email: String!, password: String! profession: String!): Auth
-    updateWorker(id: ID!, username: String, email: String, password: String, profession: String): Worker
+    addWorker(
+        username: String!
+        email: String!
+        password: String!
+        profession: String!
+    ): Auth
+
+    updateWorker(
+        id: ID!
+        username: String
+        email: String
+        password: String
+        profession: String
+    ): Worker
+
     deleteWorker(id: ID!): Worker
 
-    addEmployer(username: String!, email: String!, password: String!): Auth
-    updateEmployer(id: ID!, username: String, email: String, password: String): Employer
+    addEmployer(
+        username: String!
+        email: String!
+        password: String!
+    ): Auth
+
+    updateEmployer(
+        id: ID!
+        username: String
+        email: String
+        password: String
+    ): Employer
+
     deleteEmployer(id: ID!): Employer
 
-    login(email: String!, password: String!, userType: String!): Auth
+    login(
+        email: String!
+        password: String!
+        userType: String!
+    ): Auth
 }
 `
 module.exports = typeDefs;
