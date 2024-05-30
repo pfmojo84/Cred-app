@@ -1,4 +1,5 @@
 const { Worker, Employer, Job } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
 
@@ -69,7 +70,9 @@ const resolvers = {
 
         // This block handles creation, updating, and deletion of Workers
         addWorker: async (parent, { username, email, password, profession }) => {
-            return await Worker.create({ username, email, password, profession });
+            const worker = await Worker.create({ username, email, password, profession });
+            const token = signToken(worker);
+            return { token, worker }
         },
         updateWorker: async (parent, { id, username, email, password, profession }) => {
             
@@ -92,7 +95,9 @@ const resolvers = {
 
         // This block handles creation, updating, and deletion of Employers
         addEmployer: async (parent, { username, email, password }) => {
-            return await Employer.create({username, email, password});
+            const employer =  await Employer.create({username, email, password});
+            const token = signToken(employer);
+            return { token, employer }
         },
         updateEmployer: async (parent, {id, username, email, password}) => {
             const updateFields = {};
@@ -108,8 +113,34 @@ const resolvers = {
         } ,
         deleteEmployer: async (parent, { id }) => {
             return await Employer.findByIdAndDelete({ _id: id });
-        }   
-    
+        },
+
+        login: async (parent, { email, password, userType }) => {
+
+            let user;
+
+            // if userType is Worker the worker model is searched by email for a user and result is set to user
+            // otherwise the employer model is searched and the result is set to user
+            if (userType === 'Worker') {
+                user = await Worker.findOne({ email });
+            } else if (userType === 'Employer') {
+                user = await Employer.findOne({ email });
+            };
+
+            if(!user) {
+                throw AuthenticationError;
+            }
+
+            const checkPassword = await user.isCorrectPassword(password);
+
+            if (!checkPassword) {
+                throw AuthenticationError;
+            }
+
+            const token = signToken(user);
+
+            return { token, user }
+        }
     }
 }
 

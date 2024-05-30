@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 // schema for creating a worker model with email validation
 const workerSchema = new Schema(
@@ -18,7 +19,8 @@ const workerSchema = new Schema(
         },
         password: {
             type: String,
-            required: true
+            required: true,
+            minlength: 6
         },
         profession: {
             type: String,
@@ -31,7 +33,19 @@ const workerSchema = new Schema(
             }
         ]
     }
-)
+);
+
+workerSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 12;
+        this.password = await bcrypt.hash(this.password, saltRounds)
+    }
+    next();
+});
+
+workerSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password)
+};
 
 const Worker = model('Worker', workerSchema);
 
