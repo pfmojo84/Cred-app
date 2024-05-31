@@ -41,7 +41,7 @@ type Mutation {
         description: String!
         employer: ID!
     ): Job
-    
+
     updateJob(
         id: ID!
         worker: ID
@@ -49,7 +49,9 @@ type Mutation {
         name: String
     ): Job
 
-    deleteJob(id: ID!): Job
+    deleteJob(
+        id: ID!
+    ): Job
 
     addWorker(
         username: String!
@@ -66,7 +68,9 @@ type Mutation {
         profession: String
     ): Worker
 
-    deleteWorker(id: ID!): Worker
+    deleteWorker(
+        id: ID!
+    ): Worker
 
     addEmployer(
         username: String!
@@ -81,7 +85,9 @@ type Mutation {
         password: String
     ): Employer
 
-    deleteEmployer(id: ID!): Employer
+    deleteEmployer(
+        id: ID!
+    ): Employer
 
     login(
         email: String!
