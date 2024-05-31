@@ -16,6 +16,12 @@ const resolvers = {
         },
         job: async (parent, args) => {
             return await Job.findById(args.id).populate('employer').populate('worker');
+        },
+        worker: async (parent, args) => {
+            return await Worker.findById(args.id);
+        },
+        employer: async (parent, args) => {
+            return await Employer.findById(args.id);
         }
     },
 
@@ -54,7 +60,7 @@ const resolvers = {
             // creates an update fields object and stores any selected arguments within
             const updateFields = {};
             if(worker) updateFields.worker = worker;
-            if(description) updateFields.description = description;
+            if(driptioescn) updateFields.description = description;
             if(name) updateFields.name = name;
             
             return await Job.findByIdAndUpdate(

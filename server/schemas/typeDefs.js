@@ -33,6 +33,8 @@ type Query {
     employers: [Employer]
     jobs: [Job]
     job(id: ID!): Job
+    worker(id: ID!): Worker
+    employer(id: ID!): Employer
 }
 
 type Mutation {
