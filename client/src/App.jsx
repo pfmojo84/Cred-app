@@ -36,12 +36,11 @@ export default function App() {
   return (
     <ApolloProvider client={client} >
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/register" element={<RegistrationForm />} />
-      </Routes>
-    </BrowserRouter>
+
+    <div>
+      <Outlet />
+    </div>
+
 
     </ApolloProvider>
   );
