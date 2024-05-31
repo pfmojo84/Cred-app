@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
-
+import RegistrationForm from "./pages/userReg";
 import SignIn from "../src/pages/SignIn"
 
 const httpLink = createHttpLink({
@@ -36,9 +36,11 @@ export default function App() {
   return (
     <ApolloProvider client={client} >
 
+
     <div>
       <Outlet />
     </div>
+
 
     </ApolloProvider>
   );
