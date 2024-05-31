@@ -37,11 +37,11 @@ export default function App() {
   return (
     /*<ApolloProvider client={client} >
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-      </Routes>
-    </BrowserRouter>
+
+    <div>
+      <Outlet />
+    </div>
+
 
   </ApolloProvider>*/
     <div>
