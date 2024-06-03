@@ -96,8 +96,6 @@ export default function App() {
   };
   return (
     <ApolloProvider client={client} >
-
-
       <div>
       <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
         <CssBaseline />
