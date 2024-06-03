@@ -38,10 +38,11 @@ export default function App() {
     /*<ApolloProvider client={client} >
 
 
-    <div>
-      <Outlet />
-    </div>
+      <div>
+        <Outlet />
+      </div>
 
+      <Footer />
 
   </ApolloProvider>*/
     <div>

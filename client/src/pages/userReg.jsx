@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
 
+import { useMutation } from "@apollo/client";
+import { ADD_WORKER } from '../utils/mutations'
+
+import Auth from '../utils/auth'
+
 const RegistrationForm = () => {
 
     const [user, setUser] = useState({
@@ -11,6 +16,7 @@ const RegistrationForm = () => {
         profession: '',
         jobs: ''
     });
+    const [addWorker, { error, data }] = useMutation(ADD_WORKER);
 
     const handleChange = (e) => {
         setUser({
@@ -22,6 +28,18 @@ const RegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("User Registered: ", user);
+
+        
+        try {
+            const { data } = await addWorker({
+                variables: { ...user },
+            });
+
+            Auth.login(data.addWorker.token)   
+        } catch (e) {
+            console.error(e)
+        }
+        
     };
 
 

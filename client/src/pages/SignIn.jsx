@@ -11,18 +11,44 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import ControllableStates from '../components/UserDropDown';
 import BasicSelect from '../components/UserDropDown';
 
 
+
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth'
+import { useMutation } from '@apollo/client';
+
+
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const [login, {error, data}] = useMutation(LOGIN_USER);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password');
+    const userType = data.get('userType');
+
+
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: email,
+      password: password,
+      userType: userType
     });
+    try {
+      const { data: userData } = await login({
+        variables: { email: email, password: password, userType: userType }
+      })
+      //console.log(userData.login.token);
+
+      Auth.login(userData.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+    
+
+  
   };
 
   return (
@@ -68,7 +94,9 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-           <BasicSelect />
+           <BasicSelect 
+              name="userType"
+           />
             <Button
               type="submit"
               fullWidth
@@ -84,8 +112,9 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+              Don't have an account?
+                <Link href="/register" variant="body2">
+                {" Sign Up"}
                 </Link>
               </Grid>
             </Grid>

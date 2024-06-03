@@ -5,6 +5,7 @@ type Worker {
     email: String
     profession: String
     jobs: [Job]
+    password: String
 }
 
 type Employer {
@@ -12,6 +13,7 @@ type Employer {
     username: String
     email: String
     jobs: [Job]
+    password: String
 }
 
 type Job {
