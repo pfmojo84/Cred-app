@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
+import logo from '../assets/logo.svg'
 
 const logoStyle = {
   width: '140px',
@@ -131,9 +132,17 @@ function AppAppBar({ mode, toggleColorMode }) {
                 size="small"
                 component="a"
                 href="/signIn"
-                target="_blank"
               >
                 Sign in
+              </Button>
+              <Button
+                color="primary"
+                variant="text"
+                size="small"
+                component="a"
+                href="/"
+              >
+                Home
               </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
