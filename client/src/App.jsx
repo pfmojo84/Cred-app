@@ -35,20 +35,15 @@ const authLink = setContext((_, { headers }) => {
 
 export default function App() {
   return (
-    /*<ApolloProvider client={client} >
+    <ApolloProvider client={client} >
 
 
       <div>
         <Outlet />
       </div>
 
-      <Footer />
+  </ApolloProvider>
 
-  </ApolloProvider>*/
-    <div>
-      <LandingPage />
-    </div>
-    
   );
 }
 
