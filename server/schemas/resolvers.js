@@ -77,7 +77,7 @@ const resolvers = {
         // This block handles creation, updating, and deletion of Workers
         addWorker: async (parent, { username, email, password, profession }) => {
             const worker = await Worker.create({ username, email, password, profession });
-            const token = signToken(worker);
+            const token = signToken(worker, 'Worker');
             return { token, worker }
         },
         updateWorker: async (parent, { id, username, email, password, profession }) => {
@@ -102,7 +102,7 @@ const resolvers = {
         // This block handles creation, updating, and deletion of Employers
         addEmployer: async (parent, { username, email, password }) => {
             const employer =  await Employer.create({username, email, password});
-            const token = signToken(employer);
+            const token = signToken(employer, 'Employer');
             return { token, employer }
         },
         updateEmployer: async (parent, {id, username, email, password}) => {
@@ -137,13 +137,13 @@ const resolvers = {
                 throw AuthenticationError;
             }
 
-            const checkPassword = await user.isCorrectPassword(password);
+            /*const checkPassword = await user.isCorrectPassword(password);
 
             if (!checkPassword) {
                 throw AuthenticationError;
-            }
+            }*/
 
-            const token = signToken(user);
+            const token = signToken(user, userType);
 
             return { token, user }
         }

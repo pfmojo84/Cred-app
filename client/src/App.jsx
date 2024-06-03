@@ -9,7 +9,11 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 import RegistrationForm from "./pages/userReg";
-import SignIn from "../src/pages/SignIn"
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+
+
 
 const httpLink = createHttpLink({
   uri:'/graphql'
@@ -35,12 +39,13 @@ const authLink = setContext((_, { headers }) => {
 export default function App() {
   return (
     <ApolloProvider client={client} >
+      <Header />
 
+      <div>
+        <Outlet />
+      </div>
 
-    <div>
-      <Outlet />
-    </div>
-
+      <Footer />
 
     </ApolloProvider>
   );
