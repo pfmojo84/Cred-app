@@ -4,9 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
 import App from './App.jsx'
-import Home from './pages/Home'
 import SignIn from './pages/SignIn.jsx'
 import Register from './pages/userReg'
+import Home from './pages/Homepage'
 import './index.css'
 
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     errorElement: '',
     children: [
       {
-        path: '/home',
+        index: true,
         element: <Home />
       },
       {
