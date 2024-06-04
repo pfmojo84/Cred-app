@@ -23,11 +23,7 @@ export default function LandingPage() {
       <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
         <JobSearch />
-        <LogoCollection />
         <Divider />
-        <Employees />
-        <Divider />
-        <FAQ />
         <Divider />
         <Footer />
       </Box>

@@ -15,3 +15,13 @@ query Job {
     }
   }
 `
+
+export const GET_WORKERS= gql`
+query Workers {
+  workers {
+    username
+    email
+    profession
+  }
+}
+`
