@@ -43,3 +43,23 @@ export const ADD_WORKER= gql`
         }
     }
 `
+export const ADD_EMPLOYER= gql`
+    mutation Mutation(
+        $username: String!,
+        $email: String!,
+        $password: String
+    ) {
+        addEmployer(
+            username: $username,
+            email: $email,
+            password: $password
+        ) {
+        token
+        employer {
+            _id
+            username
+            email
+        }
+        }
+    }
+`
