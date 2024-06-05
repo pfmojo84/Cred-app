@@ -64,10 +64,10 @@ export default function JobSearch() {
         }}
       >
         <Typography component="h2" variant="h4" color="text.primary">
-          Available Jobs
+          Active Jobs
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Here are a few jobs which might be a good fit!
+          Here is a list of jobs that workers have already picked up from an employer
         </Typography>
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">

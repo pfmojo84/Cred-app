@@ -49,7 +49,7 @@ export const ADD_EMPLOYER= gql`
     mutation Mutation(
         $username: String!,
         $email: String!,
-        $password: String
+        $password: String!
     ) {
         addEmployer(
             username: $username,

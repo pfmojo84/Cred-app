@@ -1,15 +1,16 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import MenuItem from '@mui/material/MenuItem';
-import Drawer from '@mui/material/Drawer';
+import { 
+  AppBar,
+  Box,
+  Toolbar,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  MenuItem,
+  Drawer,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import smallLogo from '../assets/smalllogo.svg'
@@ -104,15 +105,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                   Available Jobs
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('employees')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Employees
+                   Active Jobs
                   </Typography>
                 </MenuItem>
                 <MenuItem
@@ -139,28 +132,64 @@ function AppAppBar({ mode, toggleColorMode }) {
               
               {Auth.loggedIn() ? 
                 Auth.userType() 
-                ? <Button 
+
+                ? <div>
+                  <Button 
                     underline='hover' 
                     color="inherit" 
-                    onClick={logout} 
-                    href='/home'>
-                      {"Worker"}
-                  </Button> 
+                    href='#'>
+                      {"Find Jobs"}
+                  </Button>
+                  <Button 
+                    underline='hover' 
+                    color="inherit" 
+                    href='#'>
+                      {"Portfolio"}
+                  </Button>
+                  <Button 
+
                 : <Button 
+
                     underline='hover' 
                     color="inherit" 
                     onClick={logout} 
                     href='/home'>
-                      {"Employer"}
-                  </Button> 
-                  : <Button
-                      color="primary"
-                      variant="text"
-                      size="small"
-                      component="a"
-                      href="/signIn">
-                        Sign in
-                    </Button>}
+
+                      {"Logout"}
+                  </Button>
+                  </div>
+                  : <div>
+                    <Button 
+                      underline='hover' 
+                      color="inherit" 
+                      href='#'>
+                        {"Post Jobs"}
+                    </Button>
+                    <Button 
+                      underline='hover' 
+                      color="inherit" 
+                      href='#'>
+                        {"Active Jobs"}
+                    </Button>
+                    <Button 
+                      underline='hover' 
+                      color="inherit" 
+                      onClick={logout} 
+                      href='/home'>
+                        {"Logout"}
+                    </Button>
+                    </div> 
+                    : <div>
+                      <Button
+                        color="primary"
+                        variant="text"
+                        size="small"
+                        component="a"
+                        href="/signIn">
+                          Sign in
+                      </Button>
+                      </div>}
+
               
               <Button
                 color="primary"
@@ -204,27 +233,63 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('employees')}>
-                    Employees
-                  </MenuItem>
                   <MenuItem onClick={() => scrollToSection('pricing')}>
                     Available Jobs
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
-                  <MenuItem>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/signIn" 
-                      sx={{ width: '100%' }}
-                    >
-                      Sign in
-                    </Button>
-                  </MenuItem>
+                  {Auth.loggedIn() ? 
+                        Auth.userType() 
+                        ? <div>
+                          <MenuItem>
+                          <Button 
+                            underline='hover' 
+                            color="inherit" 
+                            onClick={logout} 
+                            href='/home'>
+                              {"Logout"}
+                          </Button>
+                          </MenuItem>
+                          <MenuItem>
+                          <Button 
+                            underline='hover' 
+                            color="inherit" 
+                            href='#'>
+                              {"Find Jobs"}
+                          </Button>
+                          </MenuItem>
+                          </div> 
+                          : <MenuItem>
+                            <Button 
+                              underline='hover' 
+                              color="inherit" 
+                              onClick={logout} 
+                              href='/home'>
+                                {"Logout"}
+                            </Button>
+                            </MenuItem> 
+                            : <MenuItem>
+                              <Button
+                                color="primary"
+                                variant="text"
+                                size="small"
+                                component="a"
+                                href="/signIn">
+                                  Sign in
+                              </Button>
+                              </MenuItem>}
+                      
+                      <MenuItem>
+                      <Button
+                        color="primary"
+                        variant="text"
+                        size="small"
+                        component="a"
+                        href="/"
+                      >
+                        Home
+                      </Button>
+                      </MenuItem>
                 </Box>
               </Drawer>
             </Box>

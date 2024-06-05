@@ -1,56 +1,61 @@
-import React from "react";
-import { useState } from "react";
-import { TextField, Button, Container, Typography, Box } from "@mui/material";
-
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select
+} from "@mui/material";
 import { useMutation } from "@apollo/client";
-import { ADD_WORKER } from '../utils/mutations'
-
-import Auth from '../utils/auth'
+import { ADD_WORKER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const RegistrationForm = () => {
+  const [user, setUser] = useState({
+    username: '',
+    email: '',
+    password: '',
+    profession: '',
+    jobs: ''
+  });
+  const [addWorker, { error, data }] = useMutation(ADD_WORKER);
 
-    const [user, setUser] = useState({
-        username: '',
-        email: '',
-        password: '',
-        profession: '',
-        jobs: ''
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log("handleChange:", name, value); // Debug log
+    setUser({
+      ...user,
+      [name]: value
     });
-    const [addWorker, { error, data }] = useMutation(ADD_WORKER);
+  };
 
-    const handleChange = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        });
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("User Registered: ", user);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log("User Registered: ", user);
+    try {
+      const { data } = await addWorker({
+        variables: { ...user },
+      });
 
-        
-        try {
-            const { data } = await addWorker({
-                variables: { ...user },
-            });
-
-            Auth.login(data.addWorker.token)   
-        } catch (e) {
-            console.error(e)
-        }
-        
-    };
-
+      Auth.login(data.addWorker.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <Container sx={{ marginY: 10 }} component="main" maxWidth="xs">
-    <Typography alignItems="center" component="h1" variant="h5">
-        Sign up
-    </Typography>
+      <Typography align="center" component="h1" variant="h5">
+        Worker Sign up
+      </Typography>
       <form onSubmit={handleSubmit}>
         <Box>
-        <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -62,10 +67,10 @@ const RegistrationForm = () => {
             autoFocus
             value={user.username}
             onChange={handleChange}
-        />
+          />
         </Box>
         <Box marginTop={1}>
-        <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -76,10 +81,10 @@ const RegistrationForm = () => {
             autoComplete="email"
             value={user.email}
             onChange={handleChange}
-        />
+          />
         </Box>
         <Box marginTop={1}>
-        <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -91,33 +96,37 @@ const RegistrationForm = () => {
             autoComplete="current-password"
             value={user.password}
             onChange={handleChange}
-        />
+          />
         </Box>
         <Box marginTop={1}>
-        <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="profession"
-            label="Profession"
-            type="profession"
-            id="profession"
-            autoComplete="current-profession"
-            value={user.profession}
-            onChange={handleChange}
-        />
+          <FormControl fullWidth>
+            <InputLabel id="profession-select-label" htmlFor="profession-select">Profession</InputLabel>
+            <Select
+              labelId="profession-select-label"
+              id="profession-select"
+              name="profession"
+              value={user.profession}
+              label="Profession"
+              onChange={handleChange}
+            >
+              <MenuItem value="Developer">Developer</MenuItem>
+              <MenuItem value="Electrician">Electrician</MenuItem>
+              <MenuItem value="Engineer">Engineer</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
         <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: 2 }}
         >
-            Sign Up
+          Sign Up
         </Button>
-    </form>
-</Container>
-);
+      </form>
+    </Container>
+  );
 };
 
 export default RegistrationForm;

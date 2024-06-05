@@ -66,9 +66,8 @@ const authLink = setContext((_, { headers }) => {
       >
         <ToggleButton value>
           <AutoAwesomeRoundedIcon sx={{ fontSize: '20px', mr: 1 }} />
-          Custom theme
+          Job Cred
         </ToggleButton>
-        <ToggleButton value={false}>Material Design 2</ToggleButton>
       </ToggleButtonGroup>
     </Box>
   );
@@ -106,7 +105,7 @@ export default function App() {
           <ToggleCustomTheme
             showCustomTheme={showCustomTheme}
             toggleCustomTheme={toggleCustomTheme}
-        />
+          />
       </ThemeProvider>
       </div>
 
