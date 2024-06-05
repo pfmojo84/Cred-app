@@ -132,7 +132,6 @@ function AppAppBar({ mode, toggleColorMode }) {
               
               {Auth.loggedIn() ? 
                 Auth.userType() 
-
                 ? <div>
                   <Button 
                     underline='hover' 
@@ -146,17 +145,14 @@ function AppAppBar({ mode, toggleColorMode }) {
                     href='#'>
                       {"Portfolio"}
                   </Button>
+                : 
                   <Button 
-
-                : <Button 
-
-                    underline='hover' 
-                    color="inherit" 
-                    onClick={logout} 
-                    href='/home'>
-
-                      {"Logout"}
-                  </Button>
+                  underline='hover' 
+                  color="inherit" 
+                  onClick={logout} 
+                  href='/home'>
+                    {"Logout"}
+                </Button>
                   </div>
                   : <div>
                     <Button 
