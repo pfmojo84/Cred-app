@@ -25,6 +25,7 @@ export default function LandingPage() {
         <JobSearch />
         <Divider />
         <Divider />
+        <FAQ />
         <Footer />
       </Box>
     </div>  

@@ -30,7 +30,7 @@ const EmployerRegistration = () => {
       const { data } = await addEmployer({
         variables: { ...employer },
       });
-
+      console.log(data.addEmployer.token)
       Auth.login(data.addEmployer.token);
     } catch (e) {
       console.error(e);
