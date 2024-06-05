@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
 
-function ToggleColorMode({ mode, toggleColorMode }) {
+function ToggleColorMode({ mode = 'dark', toggleColorMode }) { // Set default mode to 'dark'
   return (
     <Box sx={{ maxWidth: '32px' }}>
       <Button
@@ -28,7 +28,7 @@ function ToggleColorMode({ mode, toggleColorMode }) {
 }
 
 ToggleColorMode.propTypes = {
-  mode: PropTypes.oneOf(['dark', 'light']).isRequired,
+  mode: PropTypes.oneOf(['dark', 'light']),
   toggleColorMode: PropTypes.func.isRequired,
 };
 
