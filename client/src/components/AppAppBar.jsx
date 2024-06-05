@@ -136,7 +136,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   <Button 
                     underline='hover' 
                     color="inherit" 
-                    href='#'>
+                    href='/findjobs'>
                       {"Find Jobs"}
                   </Button>
                   <Button 
