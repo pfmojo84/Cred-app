@@ -1,6 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Box,
+  Paper,
+  Link,
+} from "@mui/material";
 
 import { useMutation } from "@apollo/client";
 import { ADD_EMPLOYER } from "../utils/mutations";
@@ -30,7 +38,7 @@ const EmployerRegistration = () => {
       const { data } = await addEmployer({
         variables: { ...employer },
       });
-      console.log(data.addEmployer.token)
+      console.log(data.addEmployer.token);
       Auth.login(data.addEmployer.token);
     } catch (e) {
       console.error(e);
@@ -39,8 +47,8 @@ const EmployerRegistration = () => {
 
   return (
     <Container sx={{ marginY: 10 }} component="main" maxWidth="xs">
-      <Typography alignItems="center" component="h1" variant="h5">
-        Sign up Today!
+      <Typography sx={{ p: 3 }} align="center" component="h1" variant="h5">
+        Employers - Sign up Today!
       </Typography>
       <form onSubmit={handleSubmit}>
         <Box>
@@ -91,6 +99,11 @@ const EmployerRegistration = () => {
           Sign Up
         </Button>
       </form>
+      <Paper align="center" sx={{ mt: 3, bgcolor: "darkgray", p: 3 }} elevation={10}>
+        <Link color="white" variant="h5" href="/register" underline="hover">
+          {"Workers Sign Up Here"}
+        </Link>
+      </Paper>
     </Container>
   );
 };

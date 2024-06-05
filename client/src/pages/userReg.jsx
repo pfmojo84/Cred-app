@@ -8,19 +8,21 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  Select
+  Select,
+  Paper,
+  Link,
 } from "@mui/material";
 import { useMutation } from "@apollo/client";
-import { ADD_WORKER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_WORKER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const RegistrationForm = () => {
   const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-    profession: '',
-    jobs: ''
+    username: "",
+    email: "",
+    password: "",
+    profession: "",
+    jobs: "",
   });
   const [addWorker, { error, data }] = useMutation(ADD_WORKER);
 
@@ -29,7 +31,7 @@ const RegistrationForm = () => {
     console.log("handleChange:", name, value); // Debug log
     setUser({
       ...user,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -50,8 +52,8 @@ const RegistrationForm = () => {
 
   return (
     <Container sx={{ marginY: 10 }} component="main" maxWidth="xs">
-      <Typography align="center" component="h1" variant="h5">
-        Worker Sign up
+      <Typography sx={{ p: 3 }}align="center" component="h1" variant="h5">
+        Workers - Sign up Today!
       </Typography>
       <form onSubmit={handleSubmit}>
         <Box>
@@ -100,7 +102,12 @@ const RegistrationForm = () => {
         </Box>
         <Box marginTop={1}>
           <FormControl fullWidth>
-            <InputLabel id="profession-select-label" htmlFor="profession-select">Profession</InputLabel>
+            <InputLabel
+              id="profession-select-label"
+              htmlFor="profession-select"
+            >
+              Profession
+            </InputLabel>
             <Select
               labelId="profession-select-label"
               id="profession-select"
@@ -125,6 +132,11 @@ const RegistrationForm = () => {
           Sign Up
         </Button>
       </form>
+      <Paper align="center" sx={{ mt: 3, bgcolor: "darkgray", p: 3 }} elevation={10}>
+        <Link color="white" variant="h5" href="/registration" underline="hover">
+          {"Employers Sign Up Here"}
+        </Link>
+      </Paper>
     </Container>
   );
 };
