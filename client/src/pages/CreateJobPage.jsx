@@ -11,13 +11,18 @@ import {
   createTheme,
 } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
+import Auth from '../utils/auth'
+
+import { useMutation } from "@apollo/client";
+import { ADD_JOB } from "../utils/mutations";
 
 const createJob = () => {
+  const employerId = Auth.getProfile();
+  const [addJob, { error, data }] = useMutation(ADD_JOB);
   const [job, setJob] = useState({
     name: "",
     description: "",
     employer: "",
-    worker: "",
   });
 
   const handleChange = (e) => {
@@ -29,7 +34,25 @@ const createJob = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.jog("Job Created:", job);
+    console.log("Job Created:", job);
+    const jobName = job.name;
+    const jobDescription = job.description;
+    const employer = employerId.data._id;
+    const jobVaraibles =  {
+      name: jobName,
+      description: jobDescription,
+      employer: employer
+    }
+    console.log(jobVaraibles);
+
+    try {
+      const { data } = await addJob({
+        variables: jobVaraibles
+      })
+    } catch (e) {
+      console.error(e)
+    }
+    window.location.assign('/');
   };
 
   const theme = createTheme({
@@ -73,12 +96,12 @@ const createJob = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="jobname"
-                label="Job Name"
-                name="jobname"
+                id="name"
+                label="Name"
+                name="name"
                 autoComplete="jobname"
                 autoFocus
-                value={job.jobname}
+                value={job.name}
                 onChange={handleChange}
               />
             </Paper>

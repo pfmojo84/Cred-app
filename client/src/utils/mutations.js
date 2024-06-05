@@ -65,3 +65,20 @@ export const ADD_EMPLOYER= gql`
         }
     }
 `
+
+export const ADD_JOB= gql`
+mutation Mutation(
+    $name: String!,
+    $description: String!,
+    $employer: ID!
+) {
+    addJob(
+        name: $name,
+        description: $description,
+        employer: $employer
+    ) {
+      _id
+      name
+    }
+  }
+`
