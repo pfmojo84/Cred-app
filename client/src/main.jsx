@@ -8,6 +8,7 @@ import Register from './pages/userReg.jsx'
 import Registration from './pages/employerReg.jsx'
 import Home from './pages/Homepage'
 import CreateJob from './pages/CreateJobPage.jsx'
+import FindJob from './pages/FindJobs.jsx';
 import './index.css'
 
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/createjob',
         element: <CreateJob />
+      },
+      {
+        path: '/findjob',
+        element: <FindJob />
       }
       
 
