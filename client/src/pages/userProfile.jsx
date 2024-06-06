@@ -9,10 +9,44 @@ import {
   Card,
   Avatar,
   Rating,
+  Link, 
+  Button
 } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
+import { useQuery, useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { GET_WORKER } from "../utils/queries";
+import { REMOVE_WORKER_FROM_JOB } from "../utils/mutations";
 
 const userProfile = () => {
+  const user = Auth.getProfile();
+  const {loading, error, data} = useQuery(GET_WORKER, {
+    variables: {workerId: user.data._id}
+  });
+  const [ removeWorkerFromJob, { e, removeData } ] = useMutation(REMOVE_WORKER_FROM_JOB)
+
+  const worker = data?.worker || {};
+  const workerJobs = worker?.jobs || [];
+
+  const removeJob = async (key) => {
+    console.log(`here, and the key is ${key}`)
+    
+    try {
+      await removeWorkerFromJob({variables: {removeWorkerFromJobId: key}})
+      window.location.reload();
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const populateJobs = () => {
+    if (workerJobs != 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <>
       <Grid
@@ -40,7 +74,7 @@ const userProfile = () => {
             </Typography>
           </Paper>
           <Paper align="center" elevation={2} sx={{ p: 2, m: 2 }}>
-            <Typography variant="h5">User Name Here</Typography>
+            <Typography variant="h5">Welcome to {worker.username}'s portfolio!</Typography>
           </Paper>
           <Rating
             sx={{ p: 1 }}
@@ -67,48 +101,47 @@ const userProfile = () => {
               gap: 4,
             }}
           >
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Current Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Current Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Current Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            {populateJobs() ? 
+              workerJobs.map((job) => { 
+                return(
+                  <Card sx={{ maxWidth: 345, m: 2 }} key={job._id}>
+                    <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {job.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {job.description}
+                        </Typography>
+                        <Button
+                          type="submit"
+                          variant="outlined"
+                          color="error"
+                          size="large"
+                          onClick={() => removeJob(job._id)}
+                        >
+                          Quit Project
+                        </Button>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                )
+              }) : (
+                <Card sx={{ maxWidth: 345, m: 2 }}>
+                  <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          OH NO! You don't appear to have any jobs...
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          
+                          <Link color="#000" variant="h5" href="/findjobs" underline="hover">
+                            ---Click this link to find one now!!---
+                          </Link>
+                        </Typography>
+                      </CardContent>
+                  </CardActionArea>
+                </Card>)}
           </Paper>
           <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
             <Typography variant="h5" align="center">

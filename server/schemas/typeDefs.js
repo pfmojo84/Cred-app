@@ -98,10 +98,12 @@ type Mutation {
         password: String!
         userType: String!
     ): Auth
-}
 
-removeWorkerFromJob(
+    removeWorkerFromJob(
         id: ID!
     ): Job
+}
+
+
 `
 module.exports = typeDefs;
