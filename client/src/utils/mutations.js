@@ -82,7 +82,6 @@ mutation Mutation(
     }
   }
 `
-
 export const UPDATE_JOB= gql`
 mutation Mutation(
     $updateJobId: ID!,
