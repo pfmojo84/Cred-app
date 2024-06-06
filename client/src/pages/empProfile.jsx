@@ -8,11 +8,10 @@ import {
   CardContent,
   Card,
   Avatar,
-  Rating,
-} from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 
-const userProfile = () => {
+} from "@mui/material";
+
+const empProfile = () => {
   return (
     <>
       <Grid
@@ -35,26 +34,17 @@ const userProfile = () => {
             sx={{ p: 2, m: 2, width: "200px" }}
           >
             <Typography variant="h5">
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>EX</Avatar>
+              <Avatar sx={{ bgcolor: "green" }}>EX</Avatar>
               Avatar Here
             </Typography>
           </Paper>
           <Paper align="center" elevation={2} sx={{ p: 2, m: 2 }}>
-            <Typography variant="h5">User Name Here</Typography>
+            <Typography variant="h5">Employer Name Here</Typography>
           </Paper>
-          <Rating
-            sx={{ p: 1 }}
-            name="half-rating"
-            size="large"
-            precision={0.5}
-            // value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-          />
+          
           <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
             <Typography variant="h5" align="center">
-              Active Projects:
+              Project List
             </Typography>
           </Paper>
           <Paper
@@ -71,7 +61,7 @@ const userProfile = () => {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Current Project
+                    In Progress...
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -85,7 +75,7 @@ const userProfile = () => {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Current Project
+                    In Progress...
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -99,65 +89,7 @@ const userProfile = () => {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Current Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Paper>
-          <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
-            <Typography variant="h5" align="center">
-              Check Out My Job Cred!
-            </Typography>
-          </Paper>
-          <Paper
-            elevation={2}
-            align="center"
-            sx={{
-              m: 3,
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              gap: 4,
-            }}
-          >
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
+                    Worker Needed!
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -174,4 +106,4 @@ const userProfile = () => {
   );
 };
 
-export default userProfile;
+export default empProfile;
