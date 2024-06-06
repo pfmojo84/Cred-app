@@ -234,28 +234,11 @@ function AppAppBar({ mode, toggleColorMode }) {
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
+                  <Box sx={{ml: -2}}>
                   {Auth.loggedIn() ? 
                         Auth.userType() 
                         ? <div>
                           <MenuItem>
-                          <Button 
-                            underline='hover' 
-                            color="inherit" 
-                            onClick={logout} 
-                            href='/home'>
-                              {"Logout"}
-                          </Button>
-                          </MenuItem>
-                          <MenuItem>
-                          <Button 
-                            underline='hover' 
-                            color="inherit" 
-                            href='#'>
-                              {"Find Jobs"}
-                          </Button>
-                          </MenuItem>
-                          </div> 
-                          : <MenuItem>
                             <Button 
                               underline='hover' 
                               color="inherit" 
@@ -263,7 +246,53 @@ function AppAppBar({ mode, toggleColorMode }) {
                               href='/home'>
                                 {"Logout"}
                             </Button>
-                            </MenuItem> 
+                          </MenuItem>
+                          <MenuItem>
+                            <Button 
+                              underline='hover' 
+                              color="inherit" 
+                              href='/findjobs'>
+                                {"Find Jobs"}
+                            </Button>
+                          </MenuItem>
+                          <MenuItem>
+                            <Button 
+                              underline='hover' 
+                              color="inherit" 
+                              href='#'>
+                                {"Portfolio"}
+                            </Button>
+                          </MenuItem>
+                          </div> 
+                          : <div>
+                            <MenuItem>
+                              <Button 
+                                underline='hover' 
+                                color="inherit" 
+                                onClick={logout} 
+                                href='/home'>
+                                  {"Logout"}
+                              </Button>
+                            </MenuItem>
+                            <MenuItem>
+                              <Button 
+                                underline='hover' 
+                                color="inherit" 
+                                onClick={logout} 
+                                href='/createjob'>
+                                  {"Post Jobs"}
+                              </Button>
+                            </MenuItem>
+                            <MenuItem>
+                              <Button 
+                                underline='hover' 
+                                color="inherit" 
+                                onClick={logout} 
+                                href='3'>
+                                  {"Active Jobs"}
+                              </Button>
+                            </MenuItem>
+                            </div>
                             : <MenuItem>
                               <Button
                                 color="primary"
@@ -286,6 +315,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                         Home
                       </Button>
                       </MenuItem>
+                  </Box>
                 </Box>
               </Drawer>
             </Box>
