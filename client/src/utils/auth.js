@@ -1,4 +1,4 @@
-import  jwtDecode  from 'jwt-decode';
+import  { jwtDecode }  from 'jwt-decode';
 
 class Auth {
     getToken() {
@@ -17,7 +17,7 @@ class Auth {
     logout() {
         const token = localStorage.getItem('id_token');
         localStorage.removeItem('id_token');
-        window.location.reload();
+        window.location.replace('/');
 
     }
 
