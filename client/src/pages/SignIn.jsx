@@ -47,7 +47,8 @@ export default function SignIn() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+
+    <Container component="main" maxWidth="xs" sx={{mb-8}}>
       <CssBaseline />
       <Box
         sx={(theme) => ({
@@ -107,6 +108,7 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
+
               Don't have an account?
               <Link href="/register" variant="body2">
                 {" Sign Up"}
