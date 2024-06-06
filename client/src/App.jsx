@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import * as React from 'react';
 import {
   ApolloClient,
@@ -8,10 +7,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, Divider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppAppBar from './components/AppAppBar';
 import getLPTheme from './components/getLPTheme';
+import Footer from "./components/Footer";
 import ToggleCustomTheme from './components/toggleCustomTheme';
 import { Box } from "@mui/material";
 
@@ -57,6 +57,8 @@ export default function App() {
           <div>
             <Outlet />
           </div>
+          <Divider />
+          <Footer />
           <ToggleCustomTheme
             showCustomTheme={showCustomTheme}
             toggleCustomTheme={toggleCustomTheme}
