@@ -6,7 +6,7 @@ const { typeDefs, resolvers } = require('./schemas');
 const db =require('./config/connection')
 
 // sets the PORT and creates a new apollo server using predefined typeDefs and resolvers
-const PORT = 3001;
+const PORT = 3002;
 const server = new ApolloServer({
   typeDefs,
   resolvers

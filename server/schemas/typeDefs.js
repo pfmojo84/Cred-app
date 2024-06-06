@@ -99,5 +99,9 @@ type Mutation {
         userType: String!
     ): Auth
 }
+
+removeWorkerFromJob(
+        id: ID!
+    ): Job
 `
 module.exports = typeDefs;
