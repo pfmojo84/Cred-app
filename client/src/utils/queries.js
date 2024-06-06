@@ -30,3 +30,18 @@ query Workers {
   }
 }
 `
+export const GET_WORKER=gql`
+query Worker($workerId: ID!) {
+  worker(id: $workerId) {
+    _id
+    username
+    email
+    profession
+    jobs {
+      _id
+      name
+      description
+    }
+  }
+}
+`

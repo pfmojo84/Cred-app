@@ -142,7 +142,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                   <Button 
                     underline='hover' 
                     color="inherit" 
-                    href='#'>
+                    href='/portfolio'>
                       {"Portfolio"}
                   </Button>
                 : 
@@ -259,7 +259,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                             <Button 
                               underline='hover' 
                               color="inherit" 
-                              href='#'>
+                              href='/portfolio'>
                                 {"Portfolio"}
                             </Button>
                           </MenuItem>

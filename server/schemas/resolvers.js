@@ -146,6 +146,24 @@ const resolvers = {
             const token = signToken(user, userType);
 
             return { token, user }
+        },
+
+        removeWorkerFromJob: async (parent, { id }) => {
+            try {
+                const job = await Job.findByIdAndUpdate(
+                    id,
+                    { worker: null },
+                    { new: true }
+                )
+
+                if(!job) {
+                    throw new Error('No Job Found')
+                }
+                return job
+            } catch (e) {
+                console.error(e)
+            }
+
         }
     }
 }

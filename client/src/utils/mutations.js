@@ -95,3 +95,14 @@ mutation Mutation(
     }
   }
 `
+export const REMOVE_WORKER_FROM_JOB = gql`
+mutation RemoveWorkerFromJob(
+    $removeWorkerFromJobId: ID!
+) {
+  removeWorkerFromJob(
+        id: $removeWorkerFromJobId
+    ) {
+    _id
+  }
+}
+`
