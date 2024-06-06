@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import App from './App.jsx'
 import SignIn from './pages/SignIn.jsx'
 import Register from './pages/userReg.jsx'
@@ -10,8 +9,10 @@ import Home from './pages/Homepage'
 import CreateJob from './pages/CreateJobPage.jsx'
 import FindJob from './pages/FindJobs.jsx';
 import UserProfile from './pages/userProfile.jsx';
-import { createTheme, ThemeProvider } from '@mui/material';
+import EmpProfile from './pages/empProfile.jsx';
+import { createTheme } from '@mui/material';
 import './index.css'
+
 
 const theme = createTheme({
   palette: {
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
       {
         path: '/userprofile',
         element: <UserProfile />
-      }
+      },
+      {
+        path: '/empprofile',
+        element: <EmpProfile />
+      }    
       
 
     ]
