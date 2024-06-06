@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
@@ -17,7 +15,7 @@ const jobs = [
     title: 'Programmer',
     starting_bid: '3000',
     description: [
-      'Description'
+      'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah'
     ],
     buttonText: 'Apply',
     buttonVariant: 'contained',
@@ -27,7 +25,7 @@ const jobs = [
     subheader: 'Recommended',
     starting_bid: '1500',
     description: [
-      'Description'
+      'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah'
     ],
     buttonText: 'Apply',
     buttonVariant: 'contained',
@@ -36,7 +34,7 @@ const jobs = [
     title: 'Enterepenuer',
     starting_bid: '3000',
     description: [
-      'Description'
+      'This is one test blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah'
     ],
     buttonText: 'Apply',
     buttonVariant: 'contained',
@@ -179,17 +177,6 @@ export default function JobSearch() {
                   </Box>
                 ))}
               </CardContent>
-              <CardActions>
-                <Button
-                  fullWidth
-                  variant={job.buttonVariant}
-                  component="a"
-                  href="/material-ui/getting-started/templates/checkout/"
-                  target="_blank"
-                >
-                  {job.buttonText}
-                </Button>
-              </CardActions>
             </Card>
           </Grid>
         ))}
