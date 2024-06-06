@@ -17,7 +17,7 @@ class Auth {
     logout() {
         const token = localStorage.getItem('id_token');
         localStorage.removeItem('id_token');
-        window.location.reload();
+        window.location.replace('/');
 
     }
 

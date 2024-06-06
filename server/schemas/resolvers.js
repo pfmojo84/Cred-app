@@ -60,7 +60,7 @@ const resolvers = {
             // creates an update fields object and stores any selected arguments within
             const updateFields = {};
             if(worker) updateFields.worker = worker;
-            if(driptioescn) updateFields.description = description;
+            if(description) updateFields.description = description;
             if(name) updateFields.name = name;
             
             return await Job.findByIdAndUpdate(
