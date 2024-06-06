@@ -9,8 +9,20 @@ import Registration from './pages/employerReg.jsx'
 import Home from './pages/Homepage'
 import CreateJob from './pages/CreateJobPage.jsx'
 import FindJob from './pages/FindJobs.jsx';
+import UserProfile from './pages/userProfile.jsx';
+import { createTheme, ThemeProvider } from '@mui/material';
 import './index.css'
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#013e87',
+    },
+    secondary: {
+      main: "#2e74c9",
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -41,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/findjobs',
         element: <FindJob />
+      },
+      {
+        path: '/userprofile',
+        element: <UserProfile />
       }
       
 

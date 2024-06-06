@@ -7,11 +7,9 @@ import {
   Button,
   Typography,
   Paper,
-  ThemeProvider,
-  createTheme,
+  Box,
 } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
-import Auth from '../utils/auth'
+import Auth from "../utils/auth";
 
 import { useMutation } from "@apollo/client";
 import { ADD_JOB } from "../utils/mutations";
@@ -38,97 +36,93 @@ const createJob = () => {
     const jobName = job.name;
     const jobDescription = job.description;
     const employer = employerId.data._id;
-    const jobVaraibles =  {
+    const jobVaraibles = {
       name: jobName,
       description: jobDescription,
-      employer: employer
-    }
+      employer: employer,
+    };
     console.log(jobVaraibles);
 
     try {
       const { data } = await addJob({
-        variables: jobVaraibles
-      })
+        variables: jobVaraibles,
+      });
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-    window.location.assign('/');
+    window.location.assign("/");
   };
 
-  const theme = createTheme({
-    components: {
-      MuiButton: {
-        defaultProps: {
-          disableRipple: true,
-          disableElevation: true,
-        },
-        styleOverrides: {
-          root: {
-            backgroundColor: deepOrange[800],
-            width: "100%",
-            color: "white",
-            textTransform: "none",
-            fontSize: "1rem",
-            borderRadius: "8px",
-            "&:hover": { backgroundColor: deepOrange[600] },
-          },
-        },
-      },
-    },
-  });
-
   return (
-    <ThemeProvider theme={theme}>
-      <Container
-        sx={{ marginY: 10 }}
-        component="main"
-        maxWidth="sm"
-        align="center"
+    <Container
+      sx={{ marginY: 12 }}
+      component="main"
+      maxWidth="sm"
+      align="center"
+    >
+      <Typography
+        sx={{
+          mt: 3,
+          p: 3,
+          boxShadow: "#013e87 0px 8px 24px",
+          border: "#013e87 2px solid",
+          bgcolor: "#013e87",
+          color: "#fff",
+        }}
+        alignItems="center"
+        component="h1"
+        variant="h5"
       >
-        <Typography alignItems="center" component="h1" variant="h5">
-          Create a New Job
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <Stack>
-            <Paper sx={{ m: 2, p: 1 }} elevation={3}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                name="name"
-                autoComplete="jobname"
-                autoFocus
-                value={job.name}
-                onChange={handleChange}
-              />
-            </Paper>
-            <Paper sx={{ m: 2, p: 1 }} elevation={3}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="description"
-                label="Enter Job Description Here"
-                name="description"
-                autoComplete="description"
-                autoFocus
-                multiline
-                rows={4}
-                value={job.description}
-                onChange={handleChange}
-              />
-            </Paper>
-            <Button type="submit" fullWidth variant="contained" color="primary">
+        Create a New Job
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <Stack>
+          <Box sx={{ mt: 3 }}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="jobname"
+              autoFocus
+              value={job.name}
+              onChange={handleChange}
+            />
+          </Box>
+          <Box sx={{ mt: 3 }}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="description"
+              label="Enter Job Description Here"
+              name="description"
+              autoComplete="description"
+              autoFocus
+              multiline
+              rows={4}
+              value={job.description}
+              onChange={handleChange}
+            />
+          </Box>
+          <Button
+            sx={{ mt: 2, p: 5 }}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
+            <Typography alignItems="center" component="h1" variant="h5">
               Create your new Job!
-            </Button>
-          </Stack>
-        </form>
-      </Container>
-    </ThemeProvider>
+            </Typography>
+          </Button>
+        </Stack>
+      </form>
+    </Container>
   );
 };
 

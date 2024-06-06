@@ -51,12 +51,28 @@ const RegistrationForm = () => {
   };
 
   return (
-    <Container sx={{ marginY: 10 }} component="main" maxWidth="xs">
-      <Typography sx={{ p: 3 }}align="center" component="h1" variant="h5">
+    <Container
+     sx={{ marginY: 12 }}
+      component="main"
+      maxWidth="sm"
+      align="center"
+    >
+      <Typography
+        sx={{
+          p: 3,
+          boxShadow: "#013e87 0px 8px 24px",
+          border: "#013e87 2px solid",
+          bgcolor: "#013e87",
+          color: "#fff",
+        }}
+        align="center"
+        component="h1"
+        variant="h5"
+      >
         Workers - Sign up Today!
       </Typography>
       <form onSubmit={handleSubmit}>
-        <Box>
+        <Box sx={{ mt: 3}}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -127,13 +143,17 @@ const RegistrationForm = () => {
           fullWidth
           variant="contained"
           color="primary"
-          sx={{ marginTop: 2 }}
+          sx={{ mt: 2 }}
         >
           Sign Up
         </Button>
       </form>
-      <Paper align="center" sx={{ mt: 3, bgcolor: "darkgray", p: 3 }} elevation={10}>
-        <Link color="white" variant="h5" href="/registration" underline="hover">
+      <Paper
+        align="center"
+        sx={{ mt: 5, bgcolor: "#f5f5f5", p: 3 }}
+        elevation={20}
+      >
+        <Link color="#000" variant="h5" href="/registration" underline="hover">
           {"Employers Sign Up Here"}
         </Link>
       </Paper>
