@@ -164,7 +164,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                     <Button 
                       underline='hover' 
                       color="inherit" 
-                      href='#'>
+                      href='/empprofile'>
                         {"Active Jobs"}
                     </Button>
                     <Button 

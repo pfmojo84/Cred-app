@@ -46,7 +46,7 @@ const userProfile = () => {
       return false
     }
   }
-
+  const randomNumber = (Math.random() * 5).toFixed(1);
   return (
     <>
       <Grid
@@ -63,16 +63,6 @@ const userProfile = () => {
           alignItems="center"
           border="1px solid"
         >
-          <Paper
-            align="center"
-            elevation={2}
-            sx={{ p: 2, m: 2, width: "200px" }}
-          >
-            <Typography variant="h5">
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>EX</Avatar>
-              Avatar Here
-            </Typography>
-          </Paper>
           <Paper align="center" elevation={2} sx={{ p: 2, m: 2 }}>
             <Typography variant="h5">Welcome to {worker.username}'s portfolio!</Typography>
           </Paper>
@@ -81,7 +71,7 @@ const userProfile = () => {
             name="half-rating"
             size="large"
             precision={0.5}
-            // value={value}
+            value= {randomNumber}
             onChange={(event, newValue) => {
               setValue(newValue);
             }}
@@ -143,64 +133,7 @@ const userProfile = () => {
                   </CardActionArea>
                 </Card>)}
           </Paper>
-          <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
-            <Typography variant="h5" align="center">
-              Check Out My Job Cred!
-            </Typography>
-          </Paper>
-          <Paper
-            elevation={2}
-            align="center"
-            sx={{
-              m: 3,
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              gap: 4,
-            }}
-          >
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, m: 2 }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Completed Project
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsa sint laborum at! Perspiciatis, delectus. Rem unde
-                    soluta temporibus suscipit velit!
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Paper>
+          
         </Box>
       </Grid>
     </>
