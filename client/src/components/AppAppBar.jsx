@@ -278,7 +278,6 @@ function AppAppBar({ mode, toggleColorMode }) {
                               <Button 
                                 underline='hover' 
                                 color="inherit" 
-                                onClick={logout} 
                                 href='/createjob'>
                                   {"Post Jobs"}
                               </Button>
@@ -287,8 +286,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                               <Button 
                                 underline='hover' 
                                 color="inherit" 
-                                onClick={logout} 
-                                href='3'>
+                                href='/empprofile'>
                                   {"Active Jobs"}
                               </Button>
                             </MenuItem>
