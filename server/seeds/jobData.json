@@ -1,20 +1,74 @@
 [
     {
-        "name": "Test Job 1",
-        "description": "a test job",
+        "name": "Website Development",
+        "description": "Developing a full-stack e-commerce website",
         "employer": "61421d243429491fdccab7f6",
         "worker": "61421d243429491fdccab7f4"
     },
     {
-        "name": "Test Job 2",
-        "description": "a test job 2",
+        "name": "Mobile App Design",
+        "description": "Designing a user-friendly mobile application interface",
         "employer": "61421d243429491fdccab7f7",
         "worker": "61421d243429491fdccab7f5"
     },
     {
-        "name": "Test Job 3 ",
-        "description": "a test job 3",
+        "name": "Data Analysis",
+        "description": "Analyzing sales data to find trends and insights",
         "employer": "61421d243429491fdccab7f6",
         "worker": "61421d243429491fdccab7f4"
+    },
+    {
+        "name": "Content Creation",
+        "description": "Creating engaging content for social media platforms",
+        "employer": "61421d243429491fdccab7f7",
+        "worker": "61421d243429491fdccab7f5"
+    },
+    {
+        "name": "SEO Optimization",
+        "description": "Improving website SEO to increase organic traffic",
+        "employer": "61421d243429491fdccab7f6",
+        "worker": "61421d243429491fdccab7f4"
+    },
+    {
+        "name": "Customer Support",
+        "description": "Providing customer support for product-related queries",
+        "employer": "61421d243429491fdccab7f7",
+        "worker": "61421d243429491fdccab7f5"
+    },
+    {
+        "name": "Marketing Campaign",
+        "description": "Planning and executing a digital marketing campaign",
+        "employer": "61421d243429491fdccab7f6",
+        "worker": "61421d243429491fdccab7f4"
+    },
+    {
+        "name": "Graphic Design",
+        "description": "Designing promotional materials and graphics",
+        "employer": "61421d243429491fdccab7f7",
+        "worker": "61421d243429491fdccab7f5"
+    },
+    {
+        "name": "Project Management",
+        "description": "Managing a team to deliver a software development project",
+        "employer": "61421d243429491fdccab7f6",
+        "worker": "61421d243429491fdccab7f4"
+    },
+    {
+        "name": "Technical Support",
+        "description": "Providing technical support and troubleshooting",
+        "employer": "61421d243429491fdccab7f7",
+        "worker": "61421d243429491fdccab7f5"
+    },
+    {
+        "name": "UI/UX Design",
+        "description": "Creating an intuitive and aesthetically pleasing user interface",
+        "employer": "61421d243429491fdccab7f6",
+        "worker": "61421d243429491fdccab7f4"
+    },
+    {
+        "name": "Software Testing",
+        "description": "Conducting tests to ensure software quality and performance",
+        "employer": "61421d243429491fdccab7f7",
+        "worker": "61421d243429491fdccab7f5"
     }
 ]
