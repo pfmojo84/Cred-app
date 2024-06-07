@@ -45,3 +45,21 @@ query Worker($workerId: ID!) {
   }
 }
 `
+
+export const GET_EMPLOYER=gql`
+query Employer($employerId: ID!) {
+  employer(id: $employerId) {
+    _id
+    username
+    email
+    jobs {
+      _id
+      name
+      description
+      worker {
+        username
+      }
+    }
+  }
+}
+`
