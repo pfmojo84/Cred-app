@@ -46,6 +46,7 @@ const userProfile = () => {
       return false
     }
   }
+  console.log(worker.username)
   const randomNumber = (Math.random() * 5).toFixed(1);
   return (
     <>
@@ -63,7 +64,7 @@ const userProfile = () => {
           alignItems="center"
           border="1px solid"
         >
-          <Paper align="center" elevation={2} sx={{ p: 2, m: 2 }}>
+          <Paper align="center" elevation={2} sx={{ p: 2, m: -1 }}>
             <Typography variant="h5">Welcome to {worker.username}'s portfolio!</Typography>
           </Paper>
           <Rating
@@ -85,7 +86,8 @@ const userProfile = () => {
             elevation={2}
             align="center"
             sx={{
-              m: 3,
+              m: -5,
+              mt: 2,
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               gap: 4,
@@ -94,7 +96,7 @@ const userProfile = () => {
             {populateJobs() ? 
               workerJobs.map((job) => { 
                 return(
-                  <Card sx={{ maxWidth: 345, m: 2 }} key={job._id}>
+                  <Card sx={{ maxWidth: 345, m: 1 }} key={job._id}>
                     <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
@@ -117,7 +119,7 @@ const userProfile = () => {
                   </Card>
                 )
               }) : (
-                <Card sx={{ maxWidth: 345, m: 2 }}>
+                <Card sx={{ maxWidth: 345, m: 1}}>
                   <CardActionArea>
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
