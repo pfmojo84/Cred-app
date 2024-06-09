@@ -27,6 +27,8 @@ const userProfile = () => {
 
   const worker = data?.worker || {};
   const workerJobs = worker?.jobs || [];
+  const completedJobs = [];
+  const activeJobs = [];
 
   const removeJob = async (key) => {
     console.log(`here, and the key is ${key}`)
@@ -39,8 +41,25 @@ const userProfile = () => {
     }
   }
 
+  workerJobs.map((job) => {
+    if(job.completed) {
+      completedJobs.push(job)
+    }else {
+      activeJobs.push(job)
+    }
+  })
+  console.log(completedJobs);
+  console.log(activeJobs)
+
   const populateJobs = () => {
-    if (workerJobs != 0) {
+    if (workerJobs.length != 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+  const populateCompleted = () => {
+    if (completedJobs.length != 0){
       return true
     } else {
       return false
@@ -79,6 +98,56 @@ const userProfile = () => {
           />
           <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
             <Typography variant="h5" align="center">
+              Completed Projects:
+            </Typography>
+          </Paper>
+          <Paper
+            elevation={2}
+            align="center"
+            sx={{
+              m: -5,
+              mt: 2,
+              mb: 2,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: 4,
+            }}
+          >
+            {populateCompleted() ? 
+              completedJobs.map((job) => { 
+                return(
+                  <Card sx={{ maxWidth: 345, m: 1 }} key={job._id}>
+                    <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {job.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {job.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                )
+              }) : (
+                <Card sx={{ maxWidth: 345, m: 1}}>
+                  <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          OH NO! You don't appear to have any jobs...
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          
+                          <Link color="#000" variant="h5" href="/findjobs" underline="hover">
+                            ---Click this link to find one now!!---
+                          </Link>
+                        </Typography>
+                      </CardContent>
+                  </CardActionArea>
+                </Card>)}
+          </Paper>
+          <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
+            <Typography variant="h5" align="center">
               Active Projects:
             </Typography>
           </Paper>
@@ -94,7 +163,7 @@ const userProfile = () => {
             }}
           >
             {populateJobs() ? 
-              workerJobs.map((job) => { 
+              activeJobs.map((job) => { 
                 return(
                   <Card sx={{ maxWidth: 345, m: 1 }} key={job._id}>
                     <CardActionArea>

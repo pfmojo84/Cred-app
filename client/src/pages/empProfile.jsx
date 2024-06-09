@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_EMPLOYER } from "../utils/queries";
+import { MARK_JOB_COMPLETED } from "../utils/mutations";
 import Auth from '../utils/auth'
 
 const empProfile = () => {
@@ -22,14 +23,27 @@ const empProfile = () => {
     variables: {employerId: user.data._id}
   });
 
+  const [ markJobCompleted, {e, completedData} ] = useMutation(MARK_JOB_COMPLETED);
+
   const employer = data?.employer || {};
   const employerJobs = employer?.jobs || [];
+  const activeJobs = employerJobs.filter((job) => !job.completed)
+  //console.log(employerJobs);
 
   const populateJobs = () => {
     if (employerJobs != 0) {
       return true
     } else {
       return false
+    }
+  }
+
+  const completedJob = async (key) => {
+    try{
+      await markJobCompleted({variables: { markJobCompleteId: key }})
+      window.location.reload();
+    }catch (e) {
+      console.error(e)
     }
   }
   return (
@@ -56,14 +70,15 @@ const empProfile = () => {
             elevation={2}
             align="center"
             sx={{
-              m: 3,
+              m: -5,
+              mt: 2,
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               gap: 4,
             }}
           >
             {populateJobs() ? 
-              employerJobs.map((job) => { 
+              activeJobs.map((job) => { 
                 return(
                   <Card sx={{ maxWidth: 345, m: 2 }} key={job._id}>
                     <CardActionArea>
@@ -74,6 +89,15 @@ const empProfile = () => {
                         <Typography variant="body2" color="text.secondary">
                           {job.description}
                         </Typography>
+                        <Button
+                          type="submit"
+                          variant="outlined"
+                          color="error"
+                          size="large"
+                          onClick={() => completedJob(job._id)}
+                        >
+                          Mark Job Complete
+                        </Button>
                       </CardContent>
                     </CardActionArea>
                   </Card>

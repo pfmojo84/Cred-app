@@ -28,7 +28,7 @@ const RegistrationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("handleChange:", name, value); // Debug log
+    //console.log("handleChange:", name, value); // Debug log
     setUser({
       ...user,
       [name]: value,

@@ -12,6 +12,7 @@ import UserProfile from './pages/userProfile.jsx';
 import EmpProfile from './pages/empProfile.jsx';
 import { createTheme } from '@mui/material';
 import './index.css'
+import Auth from '../src/utils/auth.js'
 
 
 const theme = createTheme({
@@ -25,6 +26,8 @@ const theme = createTheme({
   },
 });
 
+// sets up the router for loading different components and pages
+//the logged in function from Auth is used to determine if the user is logged in and loads relevant components based on login status
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,31 +40,31 @@ const router = createBrowserRouter([
       },
       {
         path: '/signIn',
-        element: <SignIn/>
+        element: Auth.loggedIn() ? <Home /> : <SignIn/>
       },
       {
         path: '/register',
-        element: <Register />
+        element: Auth.loggedIn() ? <Home /> : <Register />
       },
       {
         path: '/registration',
-        element: <Registration />
+        element: Auth.loggedIn() ? <Home /> : <Registration />
       },
       {
         path: '/createjob',
-        element: <CreateJob />
+        element: Auth.loggedIn() ? !Auth.userType() ? <CreateJob /> : <Home /> : <SignIn />
       },
       {
         path: '/findjobs',
-        element: <FindJob />
+        element: Auth.loggedIn() ? Auth.userType() ? <FindJob /> : <Home /> : <SignIn />
       },
       {
         path: '/portfolio',
-        element: <UserProfile />
+        element: Auth.loggedIn() ? Auth.userType() ? <UserProfile /> : <Home /> : <SignIn />
       },
       {
         path: '/empprofile',
-        element: <EmpProfile />
+        element: Auth.loggedIn() ? !Auth.userType() ? <EmpProfile /> : <Home /> : <SignIn />
       }    
       
 

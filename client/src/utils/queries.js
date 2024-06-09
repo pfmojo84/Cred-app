@@ -6,6 +6,7 @@ query Query {
     _id
     name
     description
+    completed
     employer {
       _id
       username
@@ -41,6 +42,7 @@ query Worker($workerId: ID!) {
       _id
       name
       description
+      completed
     }
   }
 }
@@ -55,6 +57,7 @@ query Employer($employerId: ID!) {
     jobs {
       _id
       name
+      completed
       description
       worker {
         username

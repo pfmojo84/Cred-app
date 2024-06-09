@@ -101,19 +101,10 @@ function AppAppBar({ mode, toggleColorMode }) {
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <MenuItem
-                  onClick={() => scrollToSection('jobs')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                   Active Jobs
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
+                   Job Cred
                   </Typography>
                 </MenuItem>
               </Box>

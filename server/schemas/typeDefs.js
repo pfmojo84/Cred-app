@@ -20,6 +20,7 @@ type Job {
     _id: ID
     name: String
     description: String
+    completed: Boolean
     employer: Employer
     worker: Worker
 }
@@ -100,6 +101,10 @@ type Mutation {
     ): Auth
 
     removeWorkerFromJob(
+        id: ID!
+    ): Job
+
+    markJobComplete(
         id: ID!
     ): Job
 }

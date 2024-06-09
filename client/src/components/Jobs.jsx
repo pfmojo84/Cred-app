@@ -15,6 +15,7 @@ import { GET_JOBS } from '../utils/queries';
 export default function JobSearch() {
   const { loading, error, data } = useQuery(GET_JOBS);
   const jobData = data?.jobs || [];
+  console.log(jobData)
 
   const jobs = [
     {
