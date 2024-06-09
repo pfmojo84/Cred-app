@@ -27,11 +27,11 @@ const empProfile = () => {
 
   const employer = data?.employer || {};
   const employerJobs = employer?.jobs || [];
-  const activeJobs = employerJobs.filter((job) => !job.completed)
-  //console.log(employerJobs);
+  const activeJobs = employerJobs.filter((job) => !job.completed) // adds all jobs that are not completed to a new list
 
+  // checks to see if there are any active jobs, if not a message is displayed below
   const populateJobs = () => {
-    if (employerJobs != 0) {
+    if (activeJobs != 0) {
       return true
     } else {
       return false
@@ -62,7 +62,7 @@ const empProfile = () => {
           alignItems="center"
           border="1px solid"
         >
-          <Paper align="center" elevation={2} sx={{ p: 2, m: 2 }}>
+          <Paper align="center" elevation={2} sx={{ p: 2, m: -5, mb:1, mt:2}}>
             <Typography variant="h5">Welcome {employer.username}, here are your active jobs</Typography>
           </Paper>
           

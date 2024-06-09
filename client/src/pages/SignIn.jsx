@@ -19,6 +19,8 @@ import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 
+
+// uses the Auth file to sign in a user based on user type and creates a JWT token, also passes the user type into the token for displaying releant data
 export default function SignIn() {
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -29,16 +31,10 @@ export default function SignIn() {
     const password = data.get("password");
     const userType = data.get("userType");
 
-    console.log({
-      email: email,
-      password: password,
-      userType: userType,
-    });
     try {
       const { data: userData } = await login({
         variables: { email: email, password: password, userType: userType },
       });
-      //console.log(userData.login.token);
 
       Auth.login(userData.login.token);
     } catch (e) {

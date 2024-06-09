@@ -4,27 +4,30 @@ import {
   Box,
   ToggleButton,
   ToggleButtonGroup } from '@mui/material';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import { useQuery } from '@apollo/client';
 import { GET_WORKER, GET_EMPLOYER } from '../utils/queries';
 import Auth from '../utils/auth';
 
+
+// name is decieving, populates the badge at the bottom with the username of the signed in user, if no user is signed in Job Cred is dosplayed
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   let user = {};
  try{
   const userId = Auth.getProfile();
   const userType = Auth.userType();
-  console.log(`userId: ${userId.data._id}\n userType: ${userType}`)
+  var userTypeString;
   if (userType) {
     const {loading, error, data} = useQuery(GET_WORKER, {
       variables: {workerId: userId.data._id}
       });
       user = data?.worker || {};
+      userTypeString = `Worker: ${user.username}`;
   } else if (!userType) {
     const {loading, error, data} = useQuery(GET_EMPLOYER, {
       variables: {employerId: userId.data._id}
       });
       user = data?.employer || {};
+      userTypeString = `Employer: ${user.username}`;
   }
  } catch (e){
   console.error(e)
@@ -56,10 +59,7 @@ function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
         }}
       >
         <ToggleButton value={true}>
-          <AutoAwesomeRoundedIcon sx={{ fontSize: '20px', mr: 1 }} />
-          {user.username ? 
-            user.username :
-              "Job Cred"}
+          {user.username ? userTypeString : "Job Cred"}
         </ToggleButton>
       </ToggleButtonGroup>
     </Box>

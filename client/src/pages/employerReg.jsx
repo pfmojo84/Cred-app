@@ -15,6 +15,7 @@ import { ADD_EMPLOYER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
+// handles creating of an employer model and creates a JWT token
 const EmployerRegistration = () => {
   const [employer, setEmployer] = useState({
     username: "",
@@ -38,7 +39,6 @@ const EmployerRegistration = () => {
       const { data } = await addEmployer({
         variables: { ...employer },
       });
-      console.log(data.addEmployer.token);
       Auth.login(data.addEmployer.token);
     } catch (e) {
       console.error(e);

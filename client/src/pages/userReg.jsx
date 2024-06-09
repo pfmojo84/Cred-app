@@ -16,6 +16,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_WORKER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
+// froms to register a new worker model in the system, uses the JWT to creat a token when successful
 const RegistrationForm = () => {
   const [user, setUser] = useState({
     username: "",
@@ -28,7 +29,6 @@ const RegistrationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    //console.log("handleChange:", name, value); // Debug log
     setUser({
       ...user,
       [name]: value,
