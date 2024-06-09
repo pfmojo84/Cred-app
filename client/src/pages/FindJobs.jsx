@@ -15,6 +15,7 @@ import { GET_JOBS } from "../utils/queries";
 import { UPDATE_JOB } from "../utils/mutations";
 import Auth from '../utils/auth';
 
+// populates a page with all jobs that are not currently assigned to a worker
 const FindJob = () => {
   const { loading, data } = useQuery(GET_JOBS);
   const [ updateJob, { error, updateData } ] = useMutation(UPDATE_JOB);
@@ -33,6 +34,7 @@ const FindJob = () => {
     }
   })
   
+  // allows a worker to pick up a job that is than added to their portfolio page
   const handleSubmit = async (job) => { 
     try {
       const { data } = await updateJob({

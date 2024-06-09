@@ -24,6 +24,9 @@ const logoStyle = {
   cursor: 'pointer',
 };
 
+
+// creates the nav bar, dynamically changes the links based on if the user is logged in or not and only displays user-type specific content
+// when in mobile the navbar is condensed into a drawer component
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
 

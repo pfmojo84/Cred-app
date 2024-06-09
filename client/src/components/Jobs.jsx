@@ -12,10 +12,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@apollo/client/react/hooks/useQuery';
 import { GET_JOBS } from '../utils/queries';
 
+// populated first 3 jobs in the database, a function to choose 3 random jobs is in the works
 export default function JobSearch() {
   const { loading, error, data } = useQuery(GET_JOBS);
   const jobData = data?.jobs || [];
-  console.log(jobData)
 
   const jobs = [
     {

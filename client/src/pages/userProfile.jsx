@@ -31,8 +31,8 @@ const userProfile = () => {
   const activeJobs = [];
 
   const removeJob = async (key) => {
-    console.log(`here, and the key is ${key}`)
     
+    // pull worker data
     try {
       await removeWorkerFromJob({variables: {removeWorkerFromJobId: key}})
       window.location.reload();
@@ -41,6 +41,7 @@ const userProfile = () => {
     }
   }
 
+  // seperates jobs into completed and active lists 
   workerJobs.map((job) => {
     if(job.completed) {
       completedJobs.push(job)
@@ -48,16 +49,17 @@ const userProfile = () => {
       activeJobs.push(job)
     }
   })
-  console.log(completedJobs);
-  console.log(activeJobs)
 
+  // checks if active jobs is empty 
   const populateJobs = () => {
-    if (workerJobs.length != 0) {
+    if (activeJobs.length != 0) {
       return true
     } else {
       return false
     }
   }
+
+  // checks if completed jobs is empty
   const populateCompleted = () => {
     if (completedJobs.length != 0){
       return true
@@ -65,7 +67,6 @@ const userProfile = () => {
       return false
     }
   }
-  console.log(worker.username)
   const randomNumber = (Math.random() * 5).toFixed(1);
   return (
     <>
@@ -83,7 +84,7 @@ const userProfile = () => {
           alignItems="center"
           border="1px solid"
         >
-          <Paper align="center" elevation={2} sx={{ p: 2, m: -1 }}>
+          <Paper align="center" elevation={2} sx={{ p: 2, m: -5, mb:1, mt:2 }}>
             <Typography variant="h5">Welcome to {worker.username}'s portfolio!</Typography>
           </Paper>
           <Rating
@@ -139,14 +140,14 @@ const userProfile = () => {
                         <Typography variant="body2" color="text.secondary">
                           
                           <Link color="#000" variant="h5" href="/findjobs" underline="hover">
-                            ---Click this link to find one now!!---
+                            ---No Jobs completed yet, get to work!---
                           </Link>
                         </Typography>
                       </CardContent>
                   </CardActionArea>
                 </Card>)}
           </Paper>
-          <Paper elevation={2} sx={{ p: 2, mt: 2 }}>
+          <Paper elevation={2} sx={{ p: 2, m: -5, mb:1, mt:2 }}>
             <Typography variant="h5" align="center">
               Active Projects:
             </Typography>

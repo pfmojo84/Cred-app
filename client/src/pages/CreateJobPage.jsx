@@ -14,6 +14,8 @@ import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_JOB } from "../utils/mutations";
 
+
+// allows an employer to post jobs for workers to pick up
 const createJob = () => {
   const employerId = Auth.getProfile();
   const [addJob, { error, data }] = useMutation(ADD_JOB);
@@ -41,7 +43,6 @@ const createJob = () => {
       description: jobDescription,
       employer: employer,
     };
-    console.log(jobVaraibles);
 
     try {
       const { data } = await addJob({
