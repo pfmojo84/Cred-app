@@ -89,7 +89,8 @@ const empProfile = () => {
                         <Typography variant="body2" color="text.secondary">
                           {job.description}
                         </Typography>
-                        <Button
+                        {job.worker ? 
+                          <Button
                           type="submit"
                           variant="outlined"
                           color="error"
@@ -97,7 +98,14 @@ const empProfile = () => {
                           onClick={() => completedJob(job._id)}
                         >
                           Mark Job Complete
-                        </Button>
+                        </Button> :
+                        <Button
+                        variant="outlined"
+                        color="error"
+                        size="medium"
+                        >
+                          No Worker
+                        </ Button>}
                       </CardContent>
                     </CardActionArea>
                   </Card>
