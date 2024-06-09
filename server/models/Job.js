@@ -13,6 +13,10 @@ const jobSchema = new Schema(
             required: true,
             trim: true
         },
+        completed: {
+            type: Boolean,
+            default: false
+        },
         employer: {
             type: Schema.Types.ObjectId,
             ref: 'Employer'

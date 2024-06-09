@@ -24,7 +24,7 @@ function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
     const {loading, error, data} = useQuery(GET_EMPLOYER, {
       variables: {employerId: userId.data._id}
       });
-      user = data?.emlpoyer || {};
+      user = data?.employer || {};
   }
  } catch (e){
   console.error(e)

@@ -164,6 +164,19 @@ const resolvers = {
                 console.error(e)
             }
 
+        },
+
+        markJobComplete: async (parent, { id }) => {
+            try{
+                const job = await Job.findByIdAndUpdate(
+                    id,
+                    { completed: true },
+                    { new: true }
+                )
+                return job
+            } catch (e) {
+                console.error(e)
+            }
         }
     }
 }

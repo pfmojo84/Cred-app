@@ -106,3 +106,15 @@ mutation RemoveWorkerFromJob(
   }
 }
 `
+export const MARK_JOB_COMPLETED = gql`
+mutation Mutation(
+    $markJobCompleteId: ID!
+) {
+    markJobComplete(
+        id: $markJobCompleteId
+    ) {
+      completed
+      name
+    }
+  }
+`

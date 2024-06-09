@@ -62,7 +62,7 @@ export default function Hero() {
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           >
             Helping workers build a portfolio to impress future employers and land that dream job!
-            Enter your email address below to subscribe to our weekly news letter!
+            Navigate to the sign in page to sign in or create a profile!
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
