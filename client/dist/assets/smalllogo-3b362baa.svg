@@ -1,0 +1,6 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background with rounded corners -->
+  <rect x="0" y="0" width="100" height="100" rx="15" ry="15" fill="#023E8A" />
+  <!-- Text -->
+  <text x="50" y="80" font-family="Arial" font-size="85" fill="#FFFFFF" text-anchor="middle" font-weight="bold">JC</text>
+</svg>
